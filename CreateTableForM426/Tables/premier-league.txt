@@ -1,0 +1,92 @@
+Rank                           Team           W         T         L         +         -         =         P
+-----------------------------------------------------------------------------------------------------------
+1.                  West Ham United          20         9         9        98        63        35        69
+2.                      Aston Villa          20         6        12        77        69         8        66
+3.                       FC Chelsea          19         8        11        84        67        17        65
+4.                       FC Arsenal          19         6        11        78        55        23        63
+5.                     FC Liverpool          17        10        11        80        64        16        61
+6.                   Leicester City          16        10        12        73        75        -2        58
+7.                  AFC Bournemouth          18         3        17        70        66         4        57
+8.                        FC Fulham          18         3        17        70        67         3        57
+9.                   Crystal Palace          17         5        12        49        43         6        56
+10.               Manchester United          17         4        17        71        79        -8        55
+11.         Wolverhampton Wanderers          15         9        14        72        71         1        54
+12.               Nottingham Forest          15         8        15        72        69         3        53
+13.                 Manchester City          13        12        13        57        55         2        51
+14.                Newcastle United          14         8        16        69        70        -1        50
+15.                      FC Everton          14         7        17        60        72       -12        49
+16.               Tottenham Hotspur          15         3        18        65        69        -4        48
+17.                    Leeds United          12         5        21        50        66       -16        41
+18.                    FC Brentford          10         8        20        70        87       -17        38
+19.          Brighton & Hove Albion          10         7        21        60        79       -19        37
+20.                 FC Southhampton          10         3        25        57        96       -39        33
+-----------------------------------------------------------------------------------------------------------
+Rank                           Team           W         T         L         +         -         =         P
+-----------------------------------------------------------------------------------------------------------
+1.                  West Ham United          20         9         9        98        63        35        69
+2.                      Aston Villa          20         6        12        77        69         8        66
+3.                       FC Chelsea          19         8        11        84        67        17        65
+4.                       FC Arsenal          19         6        11        78        55        23        63
+5.                     FC Liverpool          17        10        11        80        64        16        61
+6.                   Leicester City          16        10        12        73        75        -2        58
+7.                  AFC Bournemouth          18         3        17        70        66         4        57
+8.                        FC Fulham          18         3        17        70        67         3        57
+9.                   Crystal Palace          17         5        12        49        43         6        56
+10.               Manchester United          17         4        17        71        79        -8        55
+11.         Wolverhampton Wanderers          15         9        14        72        71         1        54
+12.               Nottingham Forest          15         8        15        72        69         3        53
+13.                 Manchester City          13        12        13        57        55         2        51
+14.                Newcastle United          14         8        16        69        70        -1        50
+15.                      FC Everton          14         7        17        60        72       -12        49
+16.               Tottenham Hotspur          15         3        18        65        69        -4        48
+17.                    Leeds United          12         5        21        50        66       -16        41
+18.                    FC Brentford          10         8        20        70        87       -17        38
+19.          Brighton & Hove Albion          10         7        21        60        79       -19        37
+20.                 FC Southhampton          10         3        25        57        96       -39        33
+-----------------------------------------------------------------------------------------------------------
+Rank                           Team           W         T         L         +         -         =         P
+-----------------------------------------------------------------------------------------------------------
+1.                  West Ham United          20         9         9        98        63        35        69
+2.                      Aston Villa          20         6        12        77        69         8        66
+3.                       FC Chelsea          19         8        11        84        67        17        65
+4.                       FC Arsenal          19         6        11        78        55        23        63
+5.                     FC Liverpool          17        10        11        80        64        16        61
+6.                   Leicester City          16        10        12        73        75        -2        58
+7.                  AFC Bournemouth          18         3        17        70        66         4        57
+8.                        FC Fulham          18         3        17        70        67         3        57
+9.                   Crystal Palace          17         5        12        49        43         6        56
+10.               Manchester United          17         4        17        71        79        -8        55
+11.         Wolverhampton Wanderers          15         9        14        72        71         1        54
+12.               Nottingham Forest          15         8        15        72        69         3        53
+13.                 Manchester City          13        12        13        57        55         2        51
+14.                Newcastle United          14         8        16        69        70        -1        50
+15.                      FC Everton          14         7        17        60        72       -12        49
+16.               Tottenham Hotspur          15         3        18        65        69        -4        48
+17.                    Leeds United          12         5        21        50        66       -16        41
+18.                    FC Brentford          10         8        20        70        87       -17        38
+19.          Brighton & Hove Albion          10         7        21        60        79       -19        37
+20.                 FC Southhampton          10         3        25        57        96       -39        33
+-----------------------------------------------------------------------------------------------------------
+Rank                           Team           W         T         L         +         -         =         P
+-----------------------------------------------------------------------------------------------------------
+1.                  West Ham United          20         9         9        98        63        35        69
+2.                      Aston Villa          20         6        12        77        69         8        66
+3.                       FC Chelsea          19         8        11        84        67        17        65
+4.                       FC Arsenal          19         6        11        78        55        23        63
+5.                     FC Liverpool          17        10        11        80        64        16        61
+6.                   Leicester City          16        10        12        73        75        -2        58
+7.                  AFC Bournemouth          18         3        17        70        66         4        57
+8.                        FC Fulham          18         3        17        70        67         3        57
+9.                   Crystal Palace          17         5        12        49        43         6        56
+10.               Manchester United          17         4        17        71        79        -8        55
+11.         Wolverhampton Wanderers          15         9        14        72        71         1        54
+12.               Nottingham Forest          15         8        15        72        69         3        53
+13.                 Manchester City          13        12        13        57        55         2        51
+14.                Newcastle United          14         8        16        69        70        -1        50
+15.                      FC Everton          14         7        17        60        72       -12        49
+16.               Tottenham Hotspur          15         3        18        65        69        -4        48
+17.                    Leeds United          12         5        21        50        66       -16        41
+18.                    FC Brentford          10         8        20        70        87       -17        38
+19.          Brighton & Hove Albion          10         7        21        60        79       -19        37
+20.                 FC Southhampton          10         3        25        57        96       -39        33
+-----------------------------------------------------------------------------------------------------------
