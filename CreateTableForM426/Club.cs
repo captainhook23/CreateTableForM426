@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreateTableForM426
+namespace TestClassOutput
 {
     public class Club
     {
@@ -29,5 +29,34 @@ namespace CreateTableForM426
             GoalsDifference = 0;
             Points = 0;    
         }
+
+        public void AddWin(int ownGoals, int opponentGoals)
+        {
+            Wins += 1;
+            Points += 3;
+            GoalsPositive += ownGoals;
+            GoalsNegative += opponentGoals;
+        }
+
+        public void AddLoss(int ownGoals, int opponentGoals)
+        {
+            Loss += 1;
+            GoalsPositive += ownGoals;
+            GoalsNegative += opponentGoals;
+        }
+
+        public void AddTie(int ownGoals, int opponentGoals)
+        {
+            Ties += 1;
+            Points += 1;
+            GoalsPositive += ownGoals;
+            GoalsNegative += opponentGoals;
+        }
+
+        public void CalculateGoalDifference()
+        {
+            GoalsDifference = GoalsPositive - GoalsNegative;
+        }
     }
+
 }

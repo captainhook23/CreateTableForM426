@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreateTableForM426
+namespace TestClassOutput
 {
     internal class Program
     {
-        private static readonly string strDir = "RawData/";
         static void Main(string[] args)
-         {
-            foreach (String stringFilePath in Directory.GetFiles(strDir))
-            {            
-                _ = new ReadData(stringFilePath);
-            }
+        {
+           Cmd cmd = new Cmd();
+            cmd.Main();
             Console.ReadLine();
         }
     }

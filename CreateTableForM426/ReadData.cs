@@ -2,45 +2,57 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace CreateTableForM426
+namespace TestClassOutput
 {
     public class ReadData
     {
-        private MatchTeams match { get; set; }
-        private Club club { get; set; }
-        private List<Club> Clubs { get; set; }
+        public MatchTeams Match { get; set; }
+        public Club Club { get; set; }
+        public List<Club> Clubs { get; set; }
         private List<Club> ClubsByPoints { get; set; }
-        private Output output { get; set; }
-        private int index = 1;
-        private string FileName { get; set; }
 
-        public ReadData(string path)
+        private int index = 1;
+
+        public ReadData()
         {
-            ReadScoreFiles(path);
-        }
-        private void ReadScoreFiles(string path)
-        {
-            FileName = Path.GetFileName(path);
             Clubs = new List<Club>();
-            GetResultsAndNames(path);
+        }
+
+        public void SetData(string[] lines, string fileName)
+        {
+            GetResultsAndNames(lines);
             ClubsByPoints = new List<Club>();
             ClubsByPoints = Clubs.OrderByDescending(club => club.Points).ThenByDescending(club => club.GoalsDifference).ToList();
-            Output();
+            OutputData(fileName);
         }
-        private void GetResultsAndNames(string path)
+
+        private void OutputData(string fileName)
         {
-            string[] lines = File.ReadAllLines(path);
+            Output output = new Output();
+            string data = "";
+            data += output.OutputTableDesign();
+
+            foreach (Club c in ClubsByPoints)
+            {
+                data += output.OutputTable(c, index);
+                index++;
+            }
+
+            data += output.OutputUnderscore();
+            Console.Write(data);
+            string newFile = "Tables/" + fileName;
+            File.WriteAllText(newFile, data);
+            Console.WriteLine("\n");
+        }
+
+        public void GetResultsAndNames(string[] lines)
+        {
             foreach (string line in lines)
             {
                 string[] s = line.Split(':');
 
-                match = new MatchTeams();
+                Match = new MatchTeams();
 
                 AddClubNameLeftSideToList(s[0]);
                 ResultClubLeftSide(s[0]);
@@ -52,102 +64,84 @@ namespace CreateTableForM426
             }
             GetGoalDifference();
         }
-        private void Output()
-        {
-            output = new Output(FileName);
-            foreach (Club c in ClubsByPoints)
-            {
-                output = new Output(c, index, FileName);
-                index++;
-            }
-            output.OutputUnderscore();
-            Console.WriteLine("\n");
-        }
-        private void GetGoalDifference()
+
+        public void GetGoalDifference()
         {
             foreach (Club club in Clubs)
             {
-                club.GoalsDifference = club.GoalsPositive - club.GoalsNegative;
+                club.CalculateGoalDifference();
             }
         }
-        private void ResultClubLeftSide(string s)
-        {
-            match.ClubLeftSideResult = s.Last();
 
-        }
-        private void ResultClubRightSide(string s)
+        public void ResultClubLeftSide(string s)
         {
-            match.ClubRightSideResult = s.First();
+            Match.ClubLeftSideResult = s.Last();
         }
-        private void AddClubNameLeftSideToList(string s)
-        {
-            match.ClubLeftSide = s.Remove(s.Length - 2, 2);
-            club = new Club(match.ClubLeftSide);
 
-            if (!Clubs.Any(b => b.Name == match.ClubLeftSide))
+        public void ResultClubRightSide(string s)
+        {
+            Match.ClubRightSideResult = s.First();
+        }
+
+        public void AddClubNameLeftSideToList(string s)
+        {
+            Match.ClubLeftSide = s.Remove(s.Length - 2, 2);
+            Club = new Club(Match.ClubLeftSide);
+
+            if (!Clubs.Any(b => b.Name == Match.ClubLeftSide))
             {
-                Clubs.Add(club);
+                Clubs.Add(Club);
             }
         }
-        private void AddClubNameRightSideToList(string s)
-        {
-            match.ClubRightSide = s.Remove(0, 2);
-            club = new Club(match.ClubRightSide);
 
-            if (!Clubs.Any(b => b.Name == match.ClubRightSide))
-            {
-                Clubs.Add(club);
-            }
-        }
-        private void AddStats()
+        public void AddClubNameRightSideToList(string s)
         {
-            if (match.ClubLeftSideResult > match.ClubRightSideResult)
-            {
-                AddLeftSideWins();
-            }
-            else if (match.ClubLeftSideResult < match.ClubRightSideResult)
-            {
-                AddRightSideWins();
-            }
-            else if (match.ClubLeftSideResult == match.ClubRightSideResult)
-            {
-                AddTies();
-            }
-        }
-        private void AddLeftSideWins()
-        {
-            Clubs.Find(b => b.Name == match.ClubLeftSide).Wins += 1;
-            Clubs.Find(b => b.Name == match.ClubLeftSide).Points += 3;
-            Clubs.Find(b => b.Name == match.ClubLeftSide).GoalsPositive += (int)Char.GetNumericValue(match.ClubLeftSideResult);
-            Clubs.Find(b => b.Name == match.ClubLeftSide).GoalsNegative += (int)Char.GetNumericValue(match.ClubRightSideResult);
+            Match.ClubRightSide = s.Remove(0, 2);
+            Club = new Club(Match.ClubRightSide);
 
-            Clubs.Find(b => b.Name == match.ClubRightSide).Loss += 1;
-            Clubs.Find(b => b.Name == match.ClubRightSide).GoalsPositive += (int)Char.GetNumericValue(match.ClubRightSideResult);
-            Clubs.Find(b => b.Name == match.ClubRightSide).GoalsNegative += (int)Char.GetNumericValue(match.ClubLeftSideResult);
+            if (!Clubs.Any(b => b.Name == Match.ClubRightSide))
+            {
+                Clubs.Add(Club);
+            }
         }
-        private void AddRightSideWins()
-        {
-            Clubs.Find(b => b.Name == match.ClubRightSide).Wins += 1;
-            Clubs.Find(b => b.Name == match.ClubRightSide).Points += 3;
-            Clubs.Find(b => b.Name == match.ClubRightSide).GoalsPositive += (int)Char.GetNumericValue(match.ClubRightSideResult);
-            Clubs.Find(b => b.Name == match.ClubRightSide).GoalsNegative += (int)Char.GetNumericValue(match.ClubLeftSideResult);
 
-            Clubs.Find(b => b.Name == match.ClubLeftSide).Loss += 1;
-            Clubs.Find(b => b.Name == match.ClubLeftSide).GoalsPositive += (int)Char.GetNumericValue(match.ClubLeftSideResult);
-            Clubs.Find(b => b.Name == match.ClubLeftSide).GoalsNegative += (int)Char.GetNumericValue(match.ClubRightSideResult);
-        }
-        private void AddTies()
+        public void AddStats()
         {
-            Clubs.Find(b => b.Name == match.ClubRightSide).Ties += 1;
-            Clubs.Find(b => b.Name == match.ClubRightSide).Points += 1;
-            Clubs.Find(b => b.Name == match.ClubRightSide).GoalsPositive += (int)Char.GetNumericValue(match.ClubRightSideResult);
-            Clubs.Find(b => b.Name == match.ClubRightSide).GoalsNegative += (int)Char.GetNumericValue(match.ClubLeftSideResult);
-
-            Clubs.Find(b => b.Name == match.ClubLeftSide).Ties += 1;
-            Clubs.Find(b => b.Name == match.ClubLeftSide).Points += 1;
-            Clubs.Find(b => b.Name == match.ClubLeftSide).GoalsPositive += (int)Char.GetNumericValue(match.ClubLeftSideResult);
-            Clubs.Find(b => b.Name == match.ClubLeftSide).GoalsNegative += (int)Char.GetNumericValue(match.ClubRightSideResult);
+            if (Match.ClubLeftSideResult > Match.ClubRightSideResult)
+            {
+                Clubs.Find(c => c.Name == Match.ClubLeftSide).AddWin(
+                    (int)Char.GetNumericValue(Match.ClubLeftSideResult),
+                    (int)Char.GetNumericValue(Match.ClubRightSideResult)
+                );
+                Clubs.Find(c => c.Name == Match.ClubRightSide).AddLoss(
+                    (int)Char.GetNumericValue(Match.ClubRightSideResult),
+                    (int)Char.GetNumericValue(Match.ClubLeftSideResult)
+                );
+            }
+            else if (Match.ClubLeftSideResult < Match.ClubRightSideResult)
+            {
+                Clubs.Find(c => c.Name == Match.ClubRightSide).AddWin(
+                    (int)Char.GetNumericValue(Match.ClubRightSideResult),
+                    (int)Char.GetNumericValue(Match.ClubLeftSideResult)
+                );
+                Clubs.Find(c => c.Name == Match.ClubLeftSide).AddLoss(
+                    (int)Char.GetNumericValue(Match.ClubLeftSideResult),
+                    (int)Char.GetNumericValue(Match.ClubRightSideResult)
+                );
+            }
+            else if (Match.ClubLeftSideResult == Match.ClubRightSideResult)
+            {
+                Clubs.Find(c => c.Name == Match.ClubRightSide).AddTie(
+                    (int)Char.GetNumericValue(Match.ClubRightSideResult),
+                    (int)Char.GetNumericValue(Match.ClubLeftSideResult)
+                );
+                Clubs.Find(c => c.Name == Match.ClubLeftSide).AddTie(
+                    (int)Char.GetNumericValue(Match.ClubLeftSideResult),
+                    (int)Char.GetNumericValue(Match.ClubRightSideResult)
+                );
+            }
         }
+
         public class MatchTeams
         {
             public string ClubLeftSide { get; set; }

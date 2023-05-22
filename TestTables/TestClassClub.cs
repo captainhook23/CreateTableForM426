@@ -1,4 +1,4 @@
-﻿using CreateTableForM426;
+﻿using TestClassOutput;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             string result = c.Name;
             //Assert
             Assert.AreEqual(result, "Hertha BSC");
@@ -33,7 +33,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.Wins;
             //Assert
             Assert.AreEqual(result, 0);
@@ -43,7 +43,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.Ties;
             //Assert
             Assert.AreEqual(result, 0);
@@ -53,7 +53,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.Loss;
             //Assert
             Assert.AreEqual(result, 0);
@@ -63,7 +63,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.GoalsPositive;
             //Assert
             Assert.AreEqual(result, 0);
@@ -73,7 +73,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.GoalsNegative;
             //Assert
             Assert.AreEqual(result, 0);
@@ -83,7 +83,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.GoalsDifference;
             //Assert
             Assert.AreEqual(result, 0);
@@ -93,7 +93,7 @@ namespace TestClassClub
         {
             //Arrange
             SetUp();
-            //
+            //Act
             int result = c.Points;
             //Assert
             Assert.AreEqual(result, 0);

@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CreateTableForM426
+namespace TestClassOutput
 {
     public class Output
     {
-        //Changeable Const and String Variables as User wish...
         private const int space = 10;
         private const int spaceName = 25;
 
@@ -26,122 +19,110 @@ namespace CreateTableForM426
         private string equal = "=";
         private string p = "P";
 
+        public string OutputTable(Club c, int index)
+        {
+            string outputData = OutputIndex(index);
+            outputData += OutputClubName(c);
+            outputData += OutputStats(c);
+            return outputData;
+        }
 
-        private string underscore = null;
-        private string newFile { get; set; }        
-        public Output(Club c, int index, string fileName)
-        {
-            newFile = "Tables/" + fileName;
-            OutputTable(c, index);
-        }
-        private void OutputTable(Club c, int index)
-        {
-            OutputIndex(index);
-            OutputClubName(c);
-            OutputStats(c);
-        }
-        private void OutputIndex(int index)
+        public string OutputIndex(int index)
         {
             string nameSpace = null;
             for (int i = index.ToString().Length; i < space - 1; i++)
             {
                 nameSpace += " ";
             }
-            Console.Write(index + "." + nameSpace);
-            File.AppendAllText(newFile, index + "." + nameSpace);
+            return index + "." + nameSpace;
         }
-        private void OutputClubName(Club c)
+
+        public string OutputClubName(Club c)
         {
             string nameSpace = null;
             for (int i = c.Name.Length; i < spaceName; i++)
             {
                 nameSpace += " ";
             }
-            Console.Write(nameSpace + c.Name + "  ");
-            File.AppendAllText(newFile, nameSpace + c.Name + "  ");
+            return nameSpace + c.Name + "  ";
         }
-        private void OutputStats(Club c)
+
+        public string OutputStats(Club c)
         {
             List<int> Stats = new List<int>() { c.Wins, c.Ties, c.Loss, c.GoalsPositive, c.GoalsNegative, c.GoalsDifference, c.Points };
+            string statsOutput = "";
 
             foreach (int result in Stats)
             {
                 string input = result.ToString();
-                OutputItemFromIntList(input);
+                statsOutput += OutputItemFromIntList(input);
             }
-            Console.WriteLine();
-            File.AppendAllText(newFile, "\n");
+            return statsOutput + "\n";
         }
-        public void OutputItemFromIntList(string s)
+
+        public string OutputItemFromIntList(string s)
         {
             string nameSpace = null;
             for (int i = s.Length; i < space; i++)
             {
                 nameSpace += " ";
             }
-            Console.Write(nameSpace + s);                        
-            File.AppendAllText(newFile, nameSpace+s);
+            return nameSpace + s;
         }
 
-
-
-        public Output(string fileName)
-        {
-            newFile = "Tables/" + fileName;
-            OutputTableDesign();
-        }
-        private void OutputTableDesign()
+        public string OutputTableDesign()
         {
             List<string> Header = new List<string>() { w, t, l, plus, minus, equal, p };
-            OutputRank();
-            OutputTeam();
+            string tableDesign = "";
+
+            tableDesign += OutputRank();
+            tableDesign += OutputTeam();
             foreach (string s in Header)
             {
-                OutputItemFromStringList(s);
+                tableDesign += OutputItemFromStringList(s);
             }
-            Console.WriteLine();
-            File.AppendAllText(newFile, "\n");
-            OutputUnderscore();
+            return tableDesign + "\n" + OutputUnderscore();
         }
-        private void OutputRank()
+
+        public string OutputRank()
         {
             string nameSpace = null;
             for (int i = rank.Length; i < space; i++)
             {
                 nameSpace += " ";
             }
-            Console.Write(rank + nameSpace);
-            File.AppendAllText(newFile,rank + nameSpace);
+            return rank + nameSpace;
         }
-        private void OutputTeam()
+
+        public string OutputTeam()
         {
             string nameSpace = null;
             for (int i = team.Length; i < spaceName; i++)
             {
                 nameSpace += " ";
             }
-            Console.Write(nameSpace + team + "  ");
-            File.AppendAllText(newFile, nameSpace + team + "  ");
-
+            return nameSpace + team + "  ";
         }
-        private void OutputItemFromStringList(string s)
+
+        public string OutputItemFromStringList(string s)
         {
             string nameSpace = null;
             for (int i = s.Length; i < space; i++)
             {
                 nameSpace += " ";
             }
-            Console.Write(nameSpace + s);
-            File.AppendAllText(newFile, nameSpace + s);
+            return nameSpace + s;
         }
-        public void OutputUnderscore()
+
+        public string OutputUnderscore()
         {
+            string underscore = "";
+
             for (int i = 0; i < 8 * space + spaceName + 2; i++)
             {
                 underscore += "-";
             }
-            Console.WriteLine(underscore);
-            File.AppendAllText(newFile, underscore + "\n");
+            return underscore + "\n";
         }
     }
 }
