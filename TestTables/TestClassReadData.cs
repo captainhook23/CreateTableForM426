@@ -20,7 +20,7 @@ namespace TestTables
         [SetUp]
         public void SetUp()
         {
-             r = new ReadData("RawData/bundesliga.txt");
+            // Arrange
              m = new MatchTeams();
         }
 
